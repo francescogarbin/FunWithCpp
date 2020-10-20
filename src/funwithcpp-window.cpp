@@ -24,40 +24,47 @@ using namespace Glib;
 using namespace Gtk;
 
 FunwithcppWindow::FunwithcppWindow()
-	: Glib::ObjectBase("FunwithcppWindow")
-	, Gtk::Window()
-	, headerbar(nullptr)
-	, mainbox(nullptr)
+    : Glib::ObjectBase("FunwithcppWindow")
+    , Gtk::Window()
+    , headerbar(nullptr)
+    , mainbox(nullptr)
     , console_view(nullptr)
-	, status_label(nullptr)
-	, toolbar(nullptr)
-	, console_buffer(nullptr)
-{
-	builder = Gtk::Builder::create_from_resource("/org/example/App/funwithcpp-window.ui");
+    , status_label(nullptr)
+    , toolbar(nullptr)
+    , console_buffer(nullptr) {
 
-	builder->get_widget("headerbar", headerbar);
-	headerbar->set_title("Fun with C++");
-	headerbar->show();
-	this->set_titlebar(*headerbar);
+    // fetch UI controls
+    builder = Gtk::Builder::create_from_resource("/org/example/App/funwithcpp-window.ui");
 
+    // setup headerbar
+    builder->get_widget("headerbar", headerbar);
+    headerbar->set_title("Fun with C++");
+    headerbar->show();
+    this->set_titlebar(*headerbar);
+
+    // fetch the main box container
     builder->get_widget("main_box", mainbox);
+
+    // fetch other widgets
     builder->get_widget("main_window_toolbar", toolbar);
     builder->get_widget("console_view", console_view);
-	builder->get_widget("status_label", status_label);
-	status_label->set_text("Idle");
-	status_label->show();
+    builder->get_widget("status_label", status_label);
+
+    // set status label and force it to appear
+    status_label->set_text("Idle");
+    status_label->show();
+
+    // add the box to main window
     add(*mainbox);
 
+    // setup the textbuffer for the console textview
     console_buffer = Gtk::TextBuffer::create();
-    console_buffer->set_text("Welcome to project Fun with C++!");
     console_view->set_buffer(console_buffer);
+    console_log("Welcome to Fun with C++ :-)");
 
-    console_log("hello from console_log");
-
-	play_with_auto();
-	//test_string_from_map();
-
-	simple_vector_test();
+    // Run tests
+    play_with_auto();
+    simple_vector_test();
 }
 
 void FunwithcppWindow::console_log(const std::string text) {
@@ -77,7 +84,6 @@ void FunwithcppWindow::announce_test(std::string test_name) {
 
 void FunwithcppWindow::play_with_auto() {
     announce_test("play_with_auto...");
-
     auto intvar{2};
     auto doublevar{2.2};
     std::vector v{intvar, doublevar};
@@ -87,13 +93,10 @@ void FunwithcppWindow::play_with_auto() {
          output.append(" ");
     }
     console_log(output);
-
-	status_label->set_text("Idle");
 }
 
 void FunwithcppWindow::test_string_from_map() {
     announce_test("string_from_map");
-
     std::map<std::string, std::string>* map_ptr = new std::map<std::string, std::string>();
     (*map_ptr)["one"] = "What a";
     (*map_ptr)["two"] = "lovely language!";
@@ -108,9 +111,6 @@ std::string FunwithcppWindow::string_from_map(const std::map<std::string, std::s
                                               const std::string& key,
                                               const std::string& deflt) {
     announce_test("string_from_map");
-
-    //const std::map<std::string, std::string>::iterator pos;
-    //pos = a_map.find(key);
     auto pos = a_map.find(key);
     if(pos == a_map.end()) {
         return deflt;
@@ -120,31 +120,25 @@ std::string FunwithcppWindow::string_from_map(const std::map<std::string, std::s
 
 void FunwithcppWindow::simple_vector_test() {
     announce_test("simple_vector_test");
-
     std::vector<std::string> vec;
-
     vec.push_back("abc");
     std::string text = "def";
     vec.push_back(text);
     std::vector<std::string>::size_type vec_size_t0 = vec.size();
     vec.shrink_to_fit();
     std::vector<std::string>::size_type vec_size_t1 = vec.size();
-
     std::string output{};
     output.append("vec t0=");
     output.append(std::to_string(vec_size_t0));
     output.append(" t1=");
     output.append(std::to_string(vec_size_t1));
-
     std::vector<std::string> autovec{"abc", "def"};
     auto autovec_size_t0 = autovec.capacity();
     autovec.shrink_to_fit();
     auto autovec_size_t1 = autovec.capacity();
-
     output.append(" autovec t0=");
     output.append(std::to_string(autovec_size_t0));
     output.append(" t1=");
     output.append(std::to_string(autovec_size_t1));
-
     console_log(output);
 }
