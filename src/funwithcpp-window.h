@@ -42,7 +42,10 @@ private:
 	Gtk::Label *status_label;
   Glib::RefPtr<Gtk::Builder> builder;
 
-  void console_log(std::string& text);
+  Glib::RefPtr<Gtk::TextBuffer> console_buffer;
+
+  void announce_test(std::string test_name);
+  void console_log(const std::string text);
   void play_with_auto();
   void test_string_from_map();
   std::string string_from_map(const std::map<std::string, std::string>& map,
