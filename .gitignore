@@ -31,7 +31,8 @@
 *.out
 *.app
 
-# Build dirs
+# Build dirs edited locally
 bin/
 build/
 build-aux/
+
