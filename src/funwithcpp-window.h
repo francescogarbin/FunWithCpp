@@ -29,28 +29,29 @@
 #include <string>
 #include <vector>
 
-class FunwithcppWindow : public Gtk::Window
-{
-public:
-	FunwithcppWindow();
+class FunwithcppWindow : public Gtk::Window {
 
-private:
-  Gtk::Box *mainbox;
-	Gtk::HeaderBar *headerbar;
-  Gtk::Toolbar *toolbar;
-  Gtk::TextView *console_view;
-	Gtk::Label *status_label;
-  Glib::RefPtr<Gtk::Builder> builder;
+  public:
 
-  Glib::RefPtr<Gtk::TextBuffer> console_buffer;
+  FunwithcppWindow();
 
-  void announce_test(std::string test_name);
-  void console_log(const std::string text);
-  void play_with_auto();
-  void test_string_from_map();
-  std::string string_from_map(const std::map<std::string, std::string>& map,
-                              const std::string& key,
-                              const std::string& deflt);
+  protected:
 
-  void simple_vector_test();
+    Gtk::Box *mainbox;
+    Gtk::HeaderBar *headerbar;
+    Gtk::Toolbar *toolbar;
+    Gtk::TextView *console_view;
+    Gtk::Label *status_label;
+    Glib::RefPtr<Gtk::Builder> builder;
+    Glib::RefPtr<Gtk::TextBuffer> console_buffer;
+
+    void announce_test(std::string test_name);
+    void console_log(const std::string text);
+    void play_with_auto();
+    void test_string_from_map();
+    void simple_vector_test();
+    std::string string_from_map(const std::map<std::string, std::string>& map,
+                                const std::string& key,
+                                const std::string& deflt);
+
 };
