@@ -19,9 +19,11 @@
 #include <string>
 #include <glibmm/ustring.h>
 #include "funwithcpp-window.h"
+#include "test_vector_copy.h"
 
 using namespace Glib;
 using namespace Gtk;
+using namespace std;
 
 FunwithcppWindow::FunwithcppWindow()
     : Glib::ObjectBase("FunwithcppWindow")
@@ -65,6 +67,12 @@ FunwithcppWindow::FunwithcppWindow()
     // Run tests
     play_with_auto();
     simple_vector_test();
+
+    TestVectorCopy vec_copy("namexyz", "descriptionxyz");
+    announce_test(vec_copy.get_name());
+    console_log(std::string("description: ") + vec_copy.get_description());
+    bool success = vec_copy.run();
+    console_log(success ? "test succeeded": "test failed");
 }
 
 void FunwithcppWindow::console_log(const std::string text) {
