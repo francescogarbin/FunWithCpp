@@ -17,6 +17,7 @@ TestVectorCopy::~TestVectorCopy()
     // empty destructor
     // and another line created on Macbook.
     // and a THIRD line added on Nixbox.
+    // Macbook did this line!
 }
 
 bool TestVectorCopy::run()
