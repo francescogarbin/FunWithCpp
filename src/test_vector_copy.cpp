@@ -9,10 +9,15 @@ TestVectorCopy::TestVectorCopy(const std::string& name,
                                const std::string& description)
                                : TestBase(name, description)
 {
+    // empty constructor
 }
 
 TestVectorCopy::~TestVectorCopy()
 {
+    // empty destructor
+    // and another line created on Macbook.
+    // and a THIRD line added on Nixbox.
+    // Nixbox did this line!
 }
 
 bool TestVectorCopy::run()
