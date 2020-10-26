@@ -14,6 +14,7 @@ TestVectorCopy::TestVectorCopy(const std::string& name,
 
 TestVectorCopy::~TestVectorCopy()
 {
+    // empty destructor
 }
 
 bool TestVectorCopy::run()
