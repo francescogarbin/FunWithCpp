@@ -14,6 +14,9 @@ TestVectorCopy::TestVectorCopy(const std::string& name,
 
 TestVectorCopy::~TestVectorCopy()
 {
+    // empty destructor
+    // and another line created on Macbook.
+    // and a THIRD line added on Nixbox.
 }
 
 bool TestVectorCopy::run()
