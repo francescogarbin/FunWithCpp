@@ -23,6 +23,6 @@ TestVectorCopy::~TestVectorCopy()
 
 bool TestVectorCopy::run()
 {
-  m_ptr_logger->debug("logging from TestVectorCopy::run()...");
+    get_logger().debug("wtf!");
     return true;
 } 

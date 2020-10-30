@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "test.h"
 
 using namespace std;
@@ -37,4 +38,12 @@ bool TestBase::run() {
     return true;
 }
 
+Logger& TestBase::get_logger()
+{
+  if(nullptr == this->m_ptr_logger)
+  {
+    throw std::runtime_error("Member Logger::m_ptr_logger is invalid.");
+  }
+  return *m_ptr_logger;
+}
 

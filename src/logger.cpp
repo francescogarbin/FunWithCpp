@@ -60,6 +60,7 @@ void Logger::debug(const std::string& message)
 
 void Logger::log(const std::string& message)
 {
+
     this->textview->set_editable(true);
     Glib::RefPtr<Gtk::TextBuffer> buffer = this->textview->get_buffer();
     std::stringstream formatted;

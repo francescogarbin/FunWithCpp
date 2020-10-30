@@ -20,4 +20,6 @@ protected:
   std::string* m_ptr_desc;
   Logger *m_ptr_logger;
 
+  Logger& get_logger();
+
 };
