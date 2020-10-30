@@ -2,11 +2,13 @@
 
 class TestVectorCopy : public TestBase {
 
-public:
+  public:
 
-  TestVectorCopy();
-  TestVectorCopy(const std::string& name, const std::string& description);
-  ~TestVectorCopy() override;
-  bool run() override;
+    TestVectorCopy();
+    TestVectorCopy(const std::string& name,
+                   const std::string& description,
+                   Logger *logger);
+    ~TestVectorCopy() override;
+    bool run() override;
 
 };

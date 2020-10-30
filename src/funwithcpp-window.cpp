@@ -16,9 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#pragma once
+
 #include <string>
 #include <glibmm/ustring.h>
 #include "funwithcpp-window.h"
+#include "logger.h"
 #include "test_vector_copy.h"
 
 using namespace Glib;
@@ -68,11 +71,15 @@ FunwithcppWindow::FunwithcppWindow()
     play_with_auto();
     simple_vector_test();
 
-    TestVectorCopy vec_copy("namexyz", "descriptionxyz");
+    Logger *logger = new Logger(console_view);
+
+    TestVectorCopy vec_copy("namexyz", "descriptionxyz", logger);
     announce_test(vec_copy.get_name());
     console_log(std::string("description: ") + vec_copy.get_description());
     bool success = vec_copy.run();
     console_log(success ? "test succeeded": "test failed");
+
+    delete logger;
 }
 
 void FunwithcppWindow::console_log(const std::string text) {

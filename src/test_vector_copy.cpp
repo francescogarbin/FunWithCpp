@@ -6,8 +6,9 @@ TestVectorCopy::TestVectorCopy()
 }
 
 TestVectorCopy::TestVectorCopy(const std::string& name,
-                               const std::string& description)
-                               : TestBase(name, description)
+                               const std::string& description,
+                               Logger *logger)
+                               : TestBase(name, description, logger)
 {
     // empty constructor
 }
@@ -22,5 +23,6 @@ TestVectorCopy::~TestVectorCopy()
 
 bool TestVectorCopy::run()
 {
+  m_ptr_logger->debug("logging from TestVectorCopy::run()...");
     return true;
 } 

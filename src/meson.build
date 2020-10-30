@@ -6,6 +6,7 @@ gnome = import('gnome')
 
 funwithcpp_sources = [
     'main.cpp'
+    ,'logger.cpp'
     ,'funwithcpp-window.cpp'
     ,'MainWindowToolbar.cpp'
     ,'test.cpp'

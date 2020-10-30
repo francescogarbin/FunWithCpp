@@ -7,9 +7,13 @@ TestBase::TestBase() :
     m_ptr_desc(nullptr) {
 }
 
-TestBase::TestBase(const std::string& name, const std::string& description) {
+TestBase::TestBase(const std::string& name,
+                   const std::string& description,
+                   Logger *logger)
+{
     m_ptr_name = new std::string(name);
     m_ptr_desc = new std::string(description);
+    m_ptr_logger = logger;
 }
 
 TestBase::~TestBase() {
