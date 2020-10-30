@@ -10,19 +10,15 @@ TestVectorCopy::TestVectorCopy(const std::string& name,
                                Logger *logger)
                                : TestBase(name, description, logger)
 {
-    // empty constructor
 }
 
 TestVectorCopy::~TestVectorCopy()
 {
-    // empty destructor
-    // and another line created on Macbook.
-    // and a THIRD line added on Nixbox.
-    // Nixbox did this line!
 }
 
 bool TestVectorCopy::run()
 {
-    get_logger().debug("wtf!");
+    get_logger().debug("TestVectorCopy::run()...");
     return true;
-} 
+}
+
